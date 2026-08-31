@@ -35,6 +35,9 @@ A simple REST API calculator built with FastAPI to learn backend development con
 
 ```python
 {
+  "a": 10,
+  "b": 5,
+  "operation": "+",
   "result": 15
 }
 ```
