@@ -6,12 +6,18 @@ from typing import Literal  # literal is a typehint used to restrict values to s
 app = FastAPI() # creates fastAPI application
 
 # PYDANTIC MODEL 
+# request model 
 class Calculation(BaseModel):  # BaseModel creates a Pydantic model called Calculation
     a: float
     b: float
     operation:Literal["+", "-", "*", "/"]  # validation will now happen before the function runs 
 
-@app.post("/calculate")  # post is used when sending data to a server 
+# response model 
+class CalculationResult(BaseModel):
+    result: float 
+
+@app.post("/calculate", response_model=CalculationResult)  # post is used when sending data to a server 
+# response_model is a built-in parameter 
 def calculate(calculation: Calculation): # calculation is the variable name, Calculation is a model within the Pydantic model
    
    if calculation.operation == "+":
@@ -36,4 +42,6 @@ def calculate(calculation: Calculation): # calculation is the variable name, Cal
            detail="Invalid operation")
        
    return {"result": result}
+
+
 
