@@ -4,8 +4,6 @@ A simple REST API calculator built with FastAPI to learn backend development con
 
 ## Features
 
-Currently, the API supports:
-
 - Addition
 - Subtraction
 - Multiplication
@@ -14,6 +12,7 @@ Currently, the API supports:
 - Invalid operation handling
 - Input validation using Pydantic
 - HTTP error responses using FastAPI's `HTTPException`
+
 
 ## Technologies Used
 
@@ -47,6 +46,7 @@ Through building this project, I practiced:
 - Creating API endpoints with FastAPI
 - Understanding GET and POST requests
 - Using Pydantic models for request validation
+- Using Pydantic's `Literal` for input validation
 - Working with JSON data
 - Returning API responses
 - Handling errors using HTTPException
