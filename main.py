@@ -13,7 +13,10 @@ class Calculation(BaseModel):  # BaseModel creates a Pydantic model called Calcu
     operation:Literal["+", "-", "*", "/"]  # validation will now happen before the function runs 
 
 # response model 
-class CalculationResult(BaseModel):
+class CalculationResult(BaseModel):  # this describes what will come out
+    a: float
+    b: float
+    operation: Literal["+", "-", "*", "/"]
     result: float 
 
 @app.post("/calculate", response_model=CalculationResult)  # post is used when sending data to a server 
@@ -41,7 +44,11 @@ def calculate(calculation: Calculation): # calculation is the variable name, Cal
            status_code=400,
            detail="Invalid operation")
        
-   return {"result": result}
+   return {
+        "a": calculation.a,
+        "b": calculation.b,
+        "operation": calculation.operation,
+        "result": result}
 
 
 
